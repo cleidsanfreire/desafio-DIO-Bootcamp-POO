@@ -1,20 +1,40 @@
 package br.com.desafio.dominio;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Dev {
     private String name;
     private Set<Conteudo> conteudosIncritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConluidos = new LinkedHashSet<>();
 
-    public void inscreverBootcamp(Bootcamp bootcamp){}
+    public void inscreverBootcamp(Bootcamp bootcamp){
+        this.conteudosIncritos.addAll(bootcamp.getConteudos());
+        bootcamp.getDevsInscritos().add(this);
+    }
 
-    public void progredir(){}
+    public Dev() {
+    }
 
-    public void calcularTotalXp(){}
+    public Dev(String name) {
+        this.name = name;
+    }
+
+    public void progredir(){
+        Optional<Conteudo> conteudo = conteudosIncritos.stream().findFirst();
+        if (conteudo.isPresent()) {
+            this.conteudosConluidos.add(conteudo.get());
+            this.conteudosIncritos.remove(conteudo.get());
+        } else {
+            System.err.println("Nenhum conteudo encontrado!");
+        }
+    }
+
+    public double calcularTotalXp(){
+        return this.conteudosConluidos
+                .stream()
+                .mapToDouble(Conteudo::calcularXP)
+                .sum();
+    }
 
     public String getName() {
         return name;

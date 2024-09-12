@@ -5,9 +5,6 @@ import java.time.LocalDate;
 public class Mentoria extends Conteudo{
     private LocalDate date;
 
-    public Mentoria() {
-    }
-
 
     @Override
     public double calcularXP() {
