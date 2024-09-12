@@ -6,7 +6,7 @@ public abstract class Conteudo {
     private String title;
     private String description;
 
-    public abstract double calcularXP();
+    public abstract double calcularXP(); // Será usado para o calculo de XP dos Devs
 
     public String getTitle() {
         return title;

@@ -17,7 +17,7 @@ public class Bootcamp {
     public Bootcamp() {
     }
 
-    public Bootcamp(String description, String name) {
+    public Bootcamp(String name,String description) {
         this.description = description;
         this.name = name;
     }
@@ -29,7 +29,7 @@ public class Bootcamp {
                 ", description='" + description + '\'' +
                 ", dataInicial=" + dataInicial +
                 ", dataFinal=" + dataFinal +
-                ", devsInscritos=" + devsInscritos +
+                ", devsInscritos=" + getDevsInscritos() +
                 ", conteudos=" + conteudos +
                 '}';
     }
